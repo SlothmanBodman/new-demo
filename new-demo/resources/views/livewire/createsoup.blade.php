@@ -1,4 +1,4 @@
-    <div class="py-12">
+<div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg p-3">
                 <form>
@@ -7,7 +7,7 @@
                     </label>
                     <input type="text" wire:model="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @error('name')
-                    <span class="text-red-500">{{$message}}<span>
+                    <span class="text-red-500">{{$message}}</span>
                     @enderror
 
                     <label for="description" class="block text-white text-sm font-bold mb-2">
@@ -15,7 +15,7 @@
                     </label>
                     <input type="text" wire:model="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @error('description')
-                        <span class="text-red-500">{{$message}}<span>
+                        <span class="text-red-500">{{$message}}</span>
                     @enderror
 
                     <label for="rating" class="block text-white text-sm font-bold mb-2">
@@ -23,7 +23,7 @@
                     </label>
                     <input type="number" wire:model="rating" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @error('rating')
-                        <span class="text-red-500">{{$message}}<span>
+                        <span class="text-red-500">{{$message}}</span>
                     @enderror
 
                     <label for="cost" class="block text-white text-sm font-bold mb-2">
@@ -31,7 +31,7 @@
                     </label>
                     <input type="number" wire:model="cost" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     @error('cost')
-                        <span class="text-red-500">{{$message}}<span>
+                        <span class="text-red-500">{{$message}}</span>
                     @enderror
 
                     <div>
@@ -45,4 +45,4 @@
                 </form>
             </div>
         </div>
-    </div>
+</div>

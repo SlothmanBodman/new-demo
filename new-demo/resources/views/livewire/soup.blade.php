@@ -15,12 +15,14 @@
             {{session()->get('error')}}
         </div>
         @endif
-        @if($addSoupModal)
-        @include('livewire.createsoup')
-        @endIf
-        @if($updateSoupModal)
-        @include('livewire.updatesoup')
-        @endIf
+        <div>
+            @if($addSoupModal)
+                @include('livewire.createsoup')
+            @endIf
+            @if($editSoupModal)
+                @include('livewire.updateSoup')
+            @endIf
+        </div>
     </div>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -42,22 +44,22 @@
                     </thead>
                     <tbody class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         @if(count($soups) > 0)
-                        @foreach($soups as $soup)
-                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$soup->name}}</td>
-                            <td class="px-6 py-4">{{$soup->description}}</td>
-                            <td class="px-6 py-4">{{$soup->rating}}</td>
-                            <td class="px-6 py-4">{{$soup->cost}}</td>
-                            <td class="px-6 py-4">
-                                <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" wire:click="editSoup({{$soup->id}})">
-                                    Update
-                                </button>
-                                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" wire:click="deleteSoup({{$soup->id}})">
-                                    Delete
-                                </button>
-                            </td>
-                        </tr>
-                        @endforeach
+                            @foreach($soups as $soup)
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$soup->name}}</td>
+                                <td class="px-6 py-4">{{$soup->description}}</td>
+                                <td class="px-6 py-4">{{$soup->rating}}</td>
+                                <td class="px-6 py-4">{{$soup->cost}}</td>
+                                <td class="px-6 py-4">
+                                    <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" wire:click="editSoup({{$soup->id}})">
+                                        Edit
+                                    </button>
+                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" wire:click="deleteSoup({{$soup->id}})">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                            @endforeach
                         @else
                         <tr>
                             <td>No soups found.</td>

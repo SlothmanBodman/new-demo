@@ -8,19 +8,18 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
 use App\Events\SoupCreated;
-
+use Exception;
 
 class Soup extends Component
 {
     public Collection $soups;
-    public ?int $soupId;
-    public ?int $user_id;
+    public ?int $id;
     public ?string $name;
     public ?string $description;
     public ?int $rating;
     public ?float $cost;
-    public bool $updateSoupModal = false;
     public bool $addSoupModal = false;
+    public bool $editSoupModal = false;
 
     /**
      * List of the add/edit form rules.
@@ -67,9 +66,10 @@ class Soup extends Component
      */
     public function addSoup()
     {
+        Log::info('Add Soup');
         $this->resetFields();
+        $this->editSoupModal = false;
         $this->addSoupModal = true;
-        $this->updateSoupModal = false;
     }
 
     /**
@@ -90,7 +90,7 @@ class Soup extends Component
             session()->flash('success', 'Soup created');
             event(new SoupCreated(Auth::user()->email));
 
-            $this->rebetFields();
+            $this->resetFields();
             $this->addSoupModal = false;
         } catch (\Exception $ex) {
             Log::error('Store Soup Error', [
@@ -101,33 +101,33 @@ class Soup extends Component
     }
 
     /**
-     * get existing soup and show edit form
+     * Edit Soup
+     * @param int $id
+     * @return void 
      */
-    public function editSoup(int $id)
+    public function editSoup(int $id): void
     {
         try {
             $soup = Soups::find($id);
 
             if (!$soup) {
-                session()->flash('error', 'Soup not found');
-                return;
+                session()->flash('error', 'Soup not found.');
             }
 
-            if ($soup->user_id !== Auth::user()->id) {
-                session()->flash('error', 'You do not own this soup!');
-                return;
+            if ($soup->user_id != Auth::user()->id) {
+                session()->flash('error', 'You do not own this soup.');
             }
 
-            $this->soupId = $soup->id;
+            $this->id = $soup->id;
             $this->name = $soup->name;
             $this->description = $soup->description;
             $this->rating = $soup->rating;
             $this->cost = $soup->cost;
-            $this->updateSoupModal = true;
             $this->addSoupModal = false;
-        } catch (\Exception $ex) {
+            $this->editSoupModal = true;
+        } catch (Exception $ex) {
             Log::error('Edit Soup Error', [
-                'data' => $id,
+                'id' => $id,
                 'exception' => $ex
             ]);
             $this->serverError();
@@ -135,26 +135,25 @@ class Soup extends Component
     }
 
     /**
-     * Update the selected soup
-     * @return void
+     * Update Soup
      */
 
     public function updateSoup()
     {
         $this->validate();
         try {
-            Soup::find($this->soupId)->update([
+            Soups::whereId($this->id)->update([
                 'name' => $this->name,
                 'description' => $this->description,
                 'rating' => $this->rating,
                 'cost' => $this->cost,
             ]);
+            session()->flash('success', 'Your soup has been updated!');
             $this->resetFields();
-            $this->updateSoupModal = false;
-            session()->flash('success', 'Soup updated');
-        } catch (\Exception $ex) {
+            $this->editSoupModal = false;
+        } catch (Exception $ex) {
             Log::error('Update Soup Error', [
-                'data' => $this->soupId,
+                'id' => $this->id,
                 'exception' => $ex
             ]);
             $this->serverError();
@@ -162,13 +161,13 @@ class Soup extends Component
     }
 
     /**
-     * Cancel Add/Edit soup Form
+     * Cancel Add soup Form
      * @return void
      */
     public function cancelSoup()
     {
         $this->addSoupModal = false;
-        $this->updateSoupModal = false;
+        $this->editSoupModal = false;
         $this->resetFields();
     }
 
