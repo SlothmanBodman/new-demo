@@ -21,7 +21,6 @@ class Soup extends Component
     public ?float $cost;
     public bool $updateSoupModal = false;
     public bool $addSoupModal = false;
-    public string $title = 'My Soups';
 
     /**
      * List of the add/edit form rules.
@@ -88,12 +87,10 @@ class Soup extends Component
                 'rating' => $this->rating,
                 'cost' => $this->cost,
             ]);
-
-
+            session()->flash('success', 'Soup created');
             event(new SoupCreated(Auth::user()->email));
 
-            session()->flash('success', 'Soup created');
-            $this->resetFields();
+            $this->rebetFields();
             $this->addSoupModal = false;
         } catch (\Exception $ex) {
             Log::error('Store Soup Error', [
