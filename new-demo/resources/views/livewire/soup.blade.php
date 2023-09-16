@@ -19,7 +19,7 @@
         @include('livewire.createsoup')
         @endIf
         @if($updateSoupModal)
-        @include('livewire.createsoup')
+        @include('livewire.updatesoup')
         @endIf
     </div>
     <div class="py-12">
