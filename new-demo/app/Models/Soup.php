@@ -30,7 +30,7 @@ class Soup extends Model
         return $this->belongsTo(User::class);
     }
 
-    function costWithVat(): float
+    function costWithVat(): string
     {
         $service = new BusinessToolsService;
         return $service->calculateCostWithVAT($this->cost);

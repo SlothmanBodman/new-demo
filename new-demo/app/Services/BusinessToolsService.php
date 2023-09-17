@@ -8,7 +8,7 @@ class BusinessToolsService
 
     const VAT_RATE = 0.20;
 
-    public function calculateCostWithVAT(float $cost): float
+    public function calculateCostWithVAT(float $cost): string
     {
         $vatCost = $cost * BusinessToolsService::VAT_RATE;
         $total = $vatCost + $cost;
