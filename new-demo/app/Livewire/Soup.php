@@ -147,6 +147,7 @@ class Soup extends Component
                 'cost' => $this->cost,
             ]);
             session()->flash('success', 'Your soup has been updated!');
+            $this->dispatch('soupUpdated', $this->id, $this->rating);
             $this->resetFields();
             $this->editSoupModal = false;
         } catch (Exception $ex) {
