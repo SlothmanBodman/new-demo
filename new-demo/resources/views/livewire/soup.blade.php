@@ -45,11 +45,11 @@
                     <tbody class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         @if(count($soups) > 0)
                             @foreach($soups as $soup)
-                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" wire:key="soup-{{$soup->id}}">
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$soup->name}}</td>
                                 <td class="px-6 py-4">{{$soup->description}}</td>
                                 <td class="px-6 py-4">
-                                    @livewire('rating', ['rating' => $soup->rating], key($soup->id))
+                                    @livewire('rating', ['rating' => $soup->rating], key('rating-' . $soup->id))
                                 </td>
                                 <td class="px-6 py-4">£{{$soup->costWithVat()}}</td>
                                 <td class="px-6 py-4">
