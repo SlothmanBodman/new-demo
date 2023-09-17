@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use App\Responses\CountryResponseItem;
+
 class RestCountriesService extends AbstractApiService
 {
     protected function setBaseUrl()
@@ -11,6 +13,10 @@ class RestCountriesService extends AbstractApiService
 
     public function getCountries()
     {
-        return $this->get('region/europe');
+        $data = $this->get('region/europe');
+
+        return array_map(function ($country) {
+            return new CountryResponseItem($country);
+        }, $data);
     }
 }
