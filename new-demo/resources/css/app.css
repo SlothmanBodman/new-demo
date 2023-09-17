@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* 
+    Not sure how you like to use tailwind, but I know you can create reusable "classes" like this. 
+    Tailwind Advises against this method to improve workflow, but just to demo, I have decided to 
+    absract some of my base table styling in here.
+*/
+
+@layer components {
+    .custom-table {
+        @apply w-full text-sm text-left text-gray-500 dark:text-gray-400;
+    }
+    .custom-table-header {
+        @apply text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400;
+    }
+    .custom-table-body {
+        @apply bg-white border-b dark:bg-gray-800 dark:border-gray-700
+    }
+}

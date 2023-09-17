@@ -32,8 +32,8 @@
                     Add Soup
                 </button>
                 @endIf
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <table class="custom-table">
+                    <thead class="custom-table-header">
                         <tr>
                             <th scope="col" class="px-6 py-3">Name</th>
                             <th scope="col" class="px-6 py-3">Description</th>
@@ -42,7 +42,7 @@
                             <th scope="col" class="px-6 py-3">Actions</th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <tbody class="custom-table-body">
                         @if(count($soups) > 0)
                             @foreach($soups as $soup)
                             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" wire:key="soup-{{$soup->id}}">
