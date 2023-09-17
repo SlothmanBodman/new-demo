@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Facades\Log;
-use App\Events\SoupCreated;
 use Exception;
 
 class Soup extends Component
@@ -88,7 +87,6 @@ class Soup extends Component
                 'cost' => $this->cost,
             ]);
             session()->flash('success', 'Soup created');
-            event(new SoupCreated(Auth::user()->email));
 
             $this->resetFields();
             $this->addSoupModal = false;
