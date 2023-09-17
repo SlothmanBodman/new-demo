@@ -49,7 +49,7 @@
                                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$soup->name}}</td>
                                 <td class="px-6 py-4">{{$soup->description}}</td>
                                 <td class="px-6 py-4">{{$soup->rating}}</td>
-                                <td class="px-6 py-4">{{$soup->cost}}</td>
+                                <td class="px-6 py-4">£{{$soup->costWithVat()}}</td>
                                 <td class="px-6 py-4">
                                     <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded" wire:click="editSoup({{$soup->id}})">
                                         Edit
