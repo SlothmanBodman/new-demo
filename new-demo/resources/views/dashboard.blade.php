@@ -27,7 +27,7 @@
 
                 @if($countries)
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">My Todos from Json Placholder</h1>
+                    <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">European Countries from REST Countries</h1>
                     <ol>
                         @foreach($countries as $country)
                             <li>{{$country['name']['official']}}</li>
