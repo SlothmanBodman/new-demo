@@ -26,7 +26,7 @@ class Soup extends Component
     protected $rules = [
         'name' => 'required',
         'description' => 'required',
-        'rating' => 'required|digits_between:1,5',
+        'rating' => 'required|integer|between:1,5',
         'cost' => 'required|numeric'
     ];
 
