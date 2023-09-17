@@ -9,8 +9,32 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in!") }}
+                    {{ __("Welcome to my ridiculous demo app!") }}
                 </div>
+
+                @if($todos)
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">My Todos from Json Placholder</h1>
+                    <ol>
+                     @foreach($todos as $todo)
+                        <li>
+                        {{$todo['title']}}
+                        </li>
+                     @endforeach
+                     <ol>
+                </div> 
+                @endif
+
+                @if($countries)
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <h1 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">My Todos from Json Placholder</h1>
+                    <ol>
+                        @foreach($countries as $country)
+                            <li>{{$country['name']['official']}}</li>
+                        @endforeach
+                     </ol>
+                </div>
+                @endif
             </div>
         </div>
     </div>
