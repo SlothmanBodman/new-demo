@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use App\Events\SoupCreated;
-use App\Listeners\SendSoupCreatedEmail;
+
+use App\Events\EndpointDown;
+use App\Listeners\SendEndpointDownNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -20,8 +21,8 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        SoupCreated::class => [
-            SendSoupCreatedEmail::class
+        EndpointDown::class => [
+            SendEndpointDownNotification::class,
         ]
     ];
 

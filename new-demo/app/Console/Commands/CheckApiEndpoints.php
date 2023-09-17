@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Events\EndpointDown;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
 
@@ -28,16 +29,17 @@ class CheckApiEndpoints extends Command
     {
         $endpoints = [
             config('api.jsonplaceholder') . 'todos',
-            config('api.restcountries') . 'all'
+            config('api.restcountries') . 'all',
+            config('api.restcountries') . 'nuhuhh',
         ];
 
         foreach ($endpoints as $endpoint) {
-            $this->info($endpoint);
             $response = Http::get($endpoint);
 
             if ($response->successful()) {
                 $this->info("Endpoint {$endpoint} is live.");
             } else {
+                event(new EndpointDown($endpoint));
                 $this->error("Endpoint {$endpoint} is down.");
             }
         }
