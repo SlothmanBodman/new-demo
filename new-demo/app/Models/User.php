@@ -44,6 +44,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    /**
+     * Create a relationship with soup.
+     */
     public function soups(): HasMany
     {
         return $this->hasMany(Soup::class);

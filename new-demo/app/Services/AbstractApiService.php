@@ -17,7 +17,12 @@ abstract class AbstractApiService
         $this->setBaseUrl();
     }
 
-    protected function get($endpoint)
+    /**
+     * Make Http Request to provided baseURL + endpoint
+     * @param string $endpoint
+     * @return array<mixed> 
+     */
+    protected function get(string $endpoint): array
     {
         try {
             $response = Http::get($this->baseUrl . $endpoint);

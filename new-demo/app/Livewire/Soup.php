@@ -43,7 +43,7 @@ class Soup extends Component
      * Reset the fields
      * @return void
      */
-    public function resetFields()
+    public function resetFields(): void
     {
         $this->name = '';
         $this->description = '';
@@ -53,8 +53,9 @@ class Soup extends Component
 
     /**
      * Flash Server Error 
+     * @return void
      */
-    public function serverError()
+    public function serverError(): void
     {
         session()->flash('error', 'Something went wrong!');
     }
@@ -63,9 +64,8 @@ class Soup extends Component
      * Open the add soup form
      * @return void 
      */
-    public function addSoup()
+    public function addSoup(): void
     {
-        Log::info('Add Soup');
         $this->resetFields();
         $this->editSoupModal = false;
         $this->addSoupModal = true;
@@ -75,7 +75,7 @@ class Soup extends Component
      * Store a new Soup
      * @return void 
      */
-    public function storeSoup()
+    public function storeSoup(): void
     {
         $this->validate();
         try {
@@ -134,9 +134,9 @@ class Soup extends Component
 
     /**
      * Update Soup
+     * @return void 
      */
-
-    public function updateSoup()
+    public function updateSoup(): void
     {
         $this->validate();
         try {
@@ -162,7 +162,7 @@ class Soup extends Component
      * Cancel Add soup Form
      * @return void
      */
-    public function cancelSoup()
+    public function cancelSoup(): void
     {
         $this->addSoupModal = false;
         $this->editSoupModal = false;
@@ -171,10 +171,10 @@ class Soup extends Component
 
     /**
      * delete soup
-     * @param mixed $id
+     * @param int $id
      * @return void
      */
-    public function deleteSoup($id)
+    public function deleteSoup(int $id): void
     {
         try {
             Soups::find($id)->delete();

@@ -17,7 +17,9 @@ class SendEndpointDownNotification
     }
 
     /**
-     * Handle the event.
+     * Send a notification specifying which endpoint is down.
+     * @param EndpointDown $event
+     * @return void
      */
     public function handle(EndpointDown $event): void
     {

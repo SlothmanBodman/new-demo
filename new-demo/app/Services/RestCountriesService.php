@@ -11,7 +11,11 @@ class RestCountriesService extends AbstractApiService
         $this->baseUrl = config('api.restcountries');
     }
 
-    public function getCountries()
+    /**
+     * Query the european region
+     * @return array<mixed>
+     */
+    public function getCountries(): array
     {
         $data = $this->get('region/europe');
 

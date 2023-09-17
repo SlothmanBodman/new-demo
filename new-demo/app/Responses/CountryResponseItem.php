@@ -8,6 +8,9 @@ class CountryResponseItem
     public string $officialName;
     public bool $unMember;
 
+    /**
+     * Map from raw API data to new array.
+     */
     public function __construct(array $data)
     {
         $this->commonName = $data["name"]["common"];

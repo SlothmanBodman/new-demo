@@ -25,11 +25,17 @@ class Soup extends Model
         "cost"
     ];
 
+    /**
+     * Create Relationship with user.
+     */
     function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /**
+     * Return the Cost with VAT added
+     */
     function costWithVat(): string
     {
         $service = new BusinessToolsService;

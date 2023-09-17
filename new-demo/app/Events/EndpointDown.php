@@ -18,6 +18,7 @@ class EndpointDown
 
     /**
      * Create a new event instance.
+     * @param string $endpoint 
      */
     public function __construct(string $endpoint)
     {
